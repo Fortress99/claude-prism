@@ -34,6 +34,12 @@ $path = [Environment]::GetEnvironmentVariable("PATH", "User")
 vcpkg install harfbuzz[graphite2]:x64-windows freetype:x64-windows icu:x64-windows fontconfig:x64-windows
 ```
 
+If `pnpm install`, `cargo`, or `vcpkg` fail with proxy connection errors (e.g. a leftover `HTTP_PROXY` pointing to a proxy that is no longer running), clear the proxy variables for the current PowerShell session and retry:
+
+```powershell
+Remove-Item Env:HTTP_PROXY, Env:HTTPS_PROXY, Env:ALL_PROXY -ErrorAction SilentlyContinue
+```
+
 ### Setup
 
 ```bash
